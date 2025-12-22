@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 28
-  productGUID: 00000000000000000000000000000000
+  productGUID: 86cd2124cc690834ab27f18a25b5e9ee
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -12,13 +12,13 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
-  productName: PharmaAR
+  companyName: Himatif
+  productName: TITRA SIMS
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
-  m_ShowUnitySplashScreen: 0
-  m_ShowUnitySplashLogo: 0
+  m_ShowUnitySplashScreen: 1
+  m_ShowUnitySplashLogo: 1
   m_SplashScreenOverlayOpacity: 1
   m_SplashScreenAnimation: 1
   m_SplashScreenLogoStyle: 1
@@ -39,8 +39,10 @@ PlayerSettings:
     y: 0
     width: 1
     height: 1
-  m_SplashScreenLogos: []
-  m_VirtualRealitySplashScreen: {fileID: 2800000, guid: e0866a3fe6007224a9e3078d831ce6fc, type: 3}
+  m_SplashScreenLogos:
+  - logo: {fileID: 21300000, guid: 08c5ff46c925e89459e5c19e4dc1a3f0, type: 3}
+    duration: 2
+  m_VirtualRealitySplashScreen: {fileID: 0}
   m_HolographicTrackingLossScreen: {fileID: 0}
   defaultScreenWidth: 1024
   defaultScreenHeight: 768
@@ -265,8 +267,8 @@ PlayerSettings:
   useCustomGradleSettingsTemplate: 0
   useCustomProguardFile: 0
   AndroidTargetArchitectures: 2
-  AndroidSplashScreenScale: 0
-  androidSplashScreen: {fileID: 0}
+  AndroidSplashScreenScale: 2
+  androidSplashScreen: {fileID: 2800000, guid: af35e2c1e5f58e5499ef0c8162633df3, type: 3}
   AndroidKeystoreName: '{inproject}: '
   AndroidKeyaliasName: 
   AndroidEnableArmv9SecurityFeatures: 0
@@ -293,7 +295,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 0}
+      m_Icon: {fileID: 2800000, guid: 77985c84fcc229645bb9226fbe50fe5c, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0
@@ -301,115 +303,115 @@ PlayerSettings:
   - m_BuildTarget: Android
     m_Icons:
     - m_Textures:
-      - {fileID: 2800000, guid: b15ee11232b424d68898398fe3cab2d0, type: 3}
-      m_Width: 192
-      m_Height: 192
-      m_Kind: 0
-      m_SubKind: 
-    - m_Textures:
-      - {fileID: 2800000, guid: fe689abc1067e4869a58c87d14482078, type: 3}
-      m_Width: 144
-      m_Height: 144
-      m_Kind: 0
-      m_SubKind: 
-    - m_Textures:
-      - {fileID: 2800000, guid: 827b731c62d8d42c093899fa44179bb2, type: 3}
-      m_Width: 96
-      m_Height: 96
-      m_Kind: 0
-      m_SubKind: 
-    - m_Textures:
-      - {fileID: 2800000, guid: d85ccead4ae714b0682b281b94267e7f, type: 3}
-      m_Width: 72
-      m_Height: 72
-      m_Kind: 0
-      m_SubKind: 
-    - m_Textures:
-      - {fileID: 2800000, guid: 6fae8ff752f494bacb3c562bed7dea2d, type: 3}
-      m_Width: 48
-      m_Height: 48
-      m_Kind: 0
-      m_SubKind: 
-    - m_Textures:
-      - {fileID: 2800000, guid: 98e9bf2eec31e492d858fd08e8223ca4, type: 3}
-      m_Width: 36
-      m_Height: 36
-      m_Kind: 0
-      m_SubKind: 
-    - m_Textures:
-      - {fileID: 2800000, guid: b15ee11232b424d68898398fe3cab2d0, type: 3}
+      - {fileID: 2800000, guid: 89e8d3d7ba3255043a5bd8552bd75f5f, type: 3}
       m_Width: 192
       m_Height: 192
       m_Kind: 1
       m_SubKind: 
     - m_Textures:
-      - {fileID: 2800000, guid: fe689abc1067e4869a58c87d14482078, type: 3}
+      - {fileID: 2800000, guid: b5182329bec96ce4d83903481fb693df, type: 3}
       m_Width: 144
       m_Height: 144
       m_Kind: 1
       m_SubKind: 
     - m_Textures:
-      - {fileID: 2800000, guid: 827b731c62d8d42c093899fa44179bb2, type: 3}
+      - {fileID: 2800000, guid: 5050cf9b34ca5c94c859e712e8fe1b75, type: 3}
       m_Width: 96
       m_Height: 96
       m_Kind: 1
       m_SubKind: 
     - m_Textures:
-      - {fileID: 2800000, guid: d85ccead4ae714b0682b281b94267e7f, type: 3}
+      - {fileID: 2800000, guid: fd10540534b0c1e4b99cea937a40238b, type: 3}
       m_Width: 72
       m_Height: 72
       m_Kind: 1
       m_SubKind: 
     - m_Textures:
-      - {fileID: 2800000, guid: 6fae8ff752f494bacb3c562bed7dea2d, type: 3}
+      - {fileID: 2800000, guid: 41cc6d84869002d4cba75c2c90ec0c7f, type: 3}
       m_Width: 48
       m_Height: 48
       m_Kind: 1
       m_SubKind: 
     - m_Textures:
-      - {fileID: 2800000, guid: 98e9bf2eec31e492d858fd08e8223ca4, type: 3}
+      - {fileID: 2800000, guid: af6b38aa453c08a4f9a4f8944e77a20b, type: 3}
       m_Width: 36
       m_Height: 36
       m_Kind: 1
       m_SubKind: 
     - m_Textures:
-      - {fileID: 2800000, guid: 17890dd0942584ef7b1886ffc15250a1, type: 3}
-      - {fileID: 2800000, guid: 44f5763023bff4d3dbfb13b858cff6ce, type: 3}
+      - {fileID: 2800000, guid: 0b95d324144f0d645a8fa626389aaa9f, type: 3}
+      m_Width: 192
+      m_Height: 192
+      m_Kind: 0
+      m_SubKind: 
+    - m_Textures:
+      - {fileID: 2800000, guid: e7b015f471ca66d46bfac03eab4e227d, type: 3}
+      m_Width: 144
+      m_Height: 144
+      m_Kind: 0
+      m_SubKind: 
+    - m_Textures:
+      - {fileID: 2800000, guid: e5a61b28595040d438fcbd910e520eb1, type: 3}
+      m_Width: 96
+      m_Height: 96
+      m_Kind: 0
+      m_SubKind: 
+    - m_Textures:
+      - {fileID: 2800000, guid: 7ffa066ce2ef63b4bb980249700c1b55, type: 3}
+      m_Width: 72
+      m_Height: 72
+      m_Kind: 0
+      m_SubKind: 
+    - m_Textures:
+      - {fileID: 2800000, guid: 465f9435b6696cb4b817ce6f55ffbd68, type: 3}
+      m_Width: 48
+      m_Height: 48
+      m_Kind: 0
+      m_SubKind: 
+    - m_Textures:
+      - {fileID: 2800000, guid: 77985c84fcc229645bb9226fbe50fe5c, type: 3}
+      m_Width: 36
+      m_Height: 36
+      m_Kind: 0
+      m_SubKind: 
+    - m_Textures:
+      - {fileID: 2800000, guid: 9e121cf5f786c944cb0c2578032eed2f, type: 3}
+      - {fileID: 2800000, guid: 5ea97fd38eb9134418a65190cee5631d, type: 3}
       m_Width: 432
       m_Height: 432
       m_Kind: 2
       m_SubKind: 
     - m_Textures:
-      - {fileID: 2800000, guid: 2c78137d6929a46249f124bad6c3c8a8, type: 3}
-      - {fileID: 2800000, guid: b4f6488d420d24b3fa919a0d3a53bcf2, type: 3}
+      - {fileID: 2800000, guid: 303131da2d99b7542829d978087f841e, type: 3}
+      - {fileID: 2800000, guid: 00d2b93ee3e167c41ab2386e781edd3a, type: 3}
       m_Width: 324
       m_Height: 324
       m_Kind: 2
       m_SubKind: 
     - m_Textures:
-      - {fileID: 2800000, guid: ad05b3745e8844194bae1994e47cd9b3, type: 3}
-      - {fileID: 2800000, guid: 78781f500fd7e4133b37547cebfe0231, type: 3}
+      - {fileID: 2800000, guid: e28aca8c0c5c7e042a88d577e779896d, type: 3}
+      - {fileID: 2800000, guid: db9e7ce1f6ba28545b05b9d0ba52289c, type: 3}
       m_Width: 216
       m_Height: 216
       m_Kind: 2
       m_SubKind: 
     - m_Textures:
-      - {fileID: 2800000, guid: 96655ac7a5e9f46d0af3ba32b5ce1d2c, type: 3}
-      - {fileID: 2800000, guid: 02ad1a4d05ea64249bdee469ef9fe40c, type: 3}
+      - {fileID: 2800000, guid: 17abb5599160d924dae80f4fd22dcdac, type: 3}
+      - {fileID: 2800000, guid: 28b5dce912d191744add36d77168f157, type: 3}
       m_Width: 162
       m_Height: 162
       m_Kind: 2
       m_SubKind: 
     - m_Textures:
-      - {fileID: 2800000, guid: aebd9fdb8f30d4d18b318f4312877849, type: 3}
-      - {fileID: 2800000, guid: 71bdaccaa006c43bf9b5eaa2ef7bad56, type: 3}
+      - {fileID: 2800000, guid: f52f8b2422a01aa4bbfc76dad1946358, type: 3}
+      - {fileID: 2800000, guid: 93f56410fc6e40b449fa35bd4685bb50, type: 3}
       m_Width: 108
       m_Height: 108
       m_Kind: 2
       m_SubKind: 
     - m_Textures:
-      - {fileID: 2800000, guid: 7b3a41568325b49058f0f996eb569a3b, type: 3}
-      - {fileID: 2800000, guid: 626c896dc88974a9fb360ba573bb43e5, type: 3}
+      - {fileID: 2800000, guid: 9a1b7c4afcb313846a4f76531a0ebafb, type: 3}
+      - {fileID: 2800000, guid: cf85635177ace0a4aae60daaa41764a9, type: 3}
       m_Width: 81
       m_Height: 81
       m_Kind: 2
@@ -573,7 +575,7 @@ PlayerSettings:
     m_GraphicsJobMode: 0
   m_BuildTargetGraphicsAPIs:
   - m_BuildTarget: AndroidPlayer
-    m_APIs: 15000000
+    m_APIs: 0b000000
     m_Automatic: 0
   - m_BuildTarget: iOSSupport
     m_APIs: 10000000
@@ -586,7 +588,7 @@ PlayerSettings:
   openGLRequireES32: 0
   m_TemplateCustomTags: {}
   mobileMTRendering:
-    Android: 1
+    Android: 0
     iPhone: 1
     tvOS: 1
   m_BuildTargetGroupLightmapEncodingQuality:
@@ -1073,7 +1075,7 @@ PlayerSettings:
   cloudProjectId: 066f626c-cd8d-48bf-996f-ce5fb8e1daa7
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: 
+  projectName: PharmaAR
   organizationId: aidanismail12
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 1

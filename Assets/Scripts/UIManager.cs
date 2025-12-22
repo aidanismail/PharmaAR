@@ -1,0 +1,241 @@
+using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.UI;
+using TMPro;
+
+public class UIManager : MonoBehaviour
+{
+    public static UIManager Instance { get; private set; }
+
+    [Header("Main Panels")]
+    public GameObject panelHomePage;
+    public GameObject panelPilihMode;
+    public GameObject panelTBA; 
+    public GameObject panelTK;  
+    public GameObject panelScanAR;
+    public GameObject panelHowToPlay;
+    public GameObject panelInformasiTim;
+
+    public GameObject panelInfo;
+
+    [Header("Tahapan Controllers (TBA)")]
+    
+    public TahapanController[] tahapanButtonsTBA;
+
+    [Header("Tahapan Controllers (TK)")]
+    
+    public TahapanController[] tahapanButtonsTK;
+
+    [Header("AR Popup References")]
+    public GameObject[] allARPopups;
+    public Button btnARNext;
+    public Button btnARPrev;
+
+    public Button btnInfo;  
+
+    [Header("Animation Controls")]
+    public Button btnPlayAnimation;
+    public Button btnStopAnimation;
+
+    private Stack<GameObject> panelHistory = new Stack<GameObject>();
+    private GameObject currentActivePanel;
+
+    void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+    }
+
+    void Start()
+    {
+        ShowPanelAndAddToHistory(panelHomePage);
+        if (btnInfo != null)
+        {
+            btnInfo.onClick.AddListener(() => ShowInfoPanel());
+        }
+        HideAllARPopups();
+        btnPlayAnimation.onClick.AddListener(OnPlayAnimationClicked);
+        btnStopAnimation.onClick.AddListener(OnStopAnimationClicked);
+    }
+
+
+
+
+    
+
+    public void ForceHideInfoPanel()
+    {
+        if (panelInfo != null && panelInfo.activeSelf)
+            panelInfo.SetActive(false);
+    }
+
+    public void ShowPanelAndAddToHistory(GameObject panelToShow)
+    {
+        ForceHideInfoPanel();
+        if (currentActivePanel != null && currentActivePanel != panelToShow && currentActivePanel != panelHomePage &&
+        currentActivePanel != panelInfo)
+        {
+            panelHistory.Push(currentActivePanel);
+        }
+        SetOnlyOnePanelActive(panelToShow);
+        currentActivePanel = panelToShow;
+    }
+
+    public void ShowInfoPanel()
+    {
+        if (GameManager.Instance != null)
+        {
+            
+            TahapanData data = GameManager.Instance.GetCurrentTahapanData(
+                GameManager.Instance.currentAttemptingTahapIndex
+            );
+
+            if (data != null && data.panelInfo != null)
+            {
+                
+                GameManager.Instance.ShowInfoPopup(data.panelInfo, null);
+            }
+        }
+    }
+
+
+    public void CloseInfoPanel()
+    {
+        if (GameManager.Instance != null)
+        {
+            TahapanData data = GameManager.Instance.GetCurrentTahapanData(
+                GameManager.Instance.currentAttemptingTahapIndex
+            );
+
+            if (data != null && data.panelInfo != null)
+            {
+                GameManager.Instance.HideInfoPopup(data.panelInfo);
+            }
+        }
+    }
+
+
+
+
+    private void SetOnlyOnePanelActive(GameObject panelToShow)
+    {
+        if (panelHomePage != null) panelHomePage.SetActive(false);
+        if (panelPilihMode != null) panelPilihMode.SetActive(false);
+        if (panelTBA != null) panelTBA.SetActive(false);
+        if (panelTK != null) panelTK.SetActive(false); 
+        if (panelScanAR != null) panelScanAR.SetActive(false);
+        if (panelHowToPlay != null) panelHowToPlay.SetActive(false);
+        if (panelInformasiTim != null) panelInformasiTim.SetActive(false);
+        if (panelInfo != null) panelInfo.SetActive(false);
+
+        if (panelToShow != null)
+        {
+            panelToShow.SetActive(true);
+            Debug.Log("UIManager: Showing Panel -> " + panelToShow.name);
+        }
+        else
+        {
+            Debug.LogWarning("UIManager: Panel tujuan ShowPanelAndAddToHistory adalah null!");
+        }
+    }
+
+    public void GoBack()
+    {
+        if (currentActivePanel == panelScanAR && GameManager.Instance != null)
+        {
+            GameManager.Instance.SetARCameraActive(false);
+            HideAllARPopups();
+        }
+
+        ForceHideInfoPanel();
+
+        if (panelHistory.Count > 0)
+        {
+            GameObject previousPanel = panelHistory.Pop();
+            SetOnlyOnePanelActive(previousPanel);
+            currentActivePanel = previousPanel;
+        }
+        else
+        {
+            SetOnlyOnePanelActive(panelHomePage);
+            currentActivePanel = panelHomePage;
+        }
+    }
+
+    
+
+    public void ShowARPopup(GameObject popupToShow)
+    {
+        HideAllARPopups();
+        if (popupToShow != null)
+        {
+            popupToShow.SetActive(true);
+            if (panelScanAR != null) panelScanAR.SetActive(true);
+            Debug.Log($"UIManager: Menampilkan Popup AR -> {popupToShow.name}");
+        }
+    }
+
+    public void HideAllARPopups()
+    {
+        if (allARPopups != null)
+        {
+            foreach (var popup in allARPopups)
+            {
+                if (popup != null) popup.SetActive(false);
+            }
+        }
+        if (btnARNext != null) btnARNext.onClick.RemoveAllListeners();
+        if (btnARPrev != null) btnARPrev.onClick.RemoveAllListeners();
+    }
+
+    
+
+    public void UpdateTahapButtonStates()
+    {
+        if (GameManager.Instance == null) return;
+
+        int lastCompletedIndex = GameManager.Instance.GetLastCompletedTahapIndex();
+
+        
+        TahapanController[] buttonsToUpdate = (GameManager.Instance.currentMode == GameManager.GameMode.TBA)
+                                              ? tahapanButtonsTBA
+                                              : tahapanButtonsTK;
+
+        if (buttonsToUpdate == null) return;
+
+        for (int i = 0; i < buttonsToUpdate.Length; i++)
+        {
+            TahapanController btn = buttonsToUpdate[i];
+            if (btn == null) continue;
+
+            bool isInteractable = (i <= lastCompletedIndex + 1);
+            float alpha = isInteractable ? 1f : 0.75f;
+
+            btn.UpdateVisualState(isInteractable, alpha);
+        }
+        Debug.Log($"UIManager: Status tombol tahapan untuk mode {GameManager.Instance.currentMode} diperbarui.");
+    }
+
+    private void OnPlayAnimationClicked()
+    {
+        
+        if (ARContentManager.Instance != null)
+        {
+            ARContentManager.Instance.PlayAnimation();
+        }
+    }
+
+    private void OnStopAnimationClicked()
+    {
+        
+        if (ARContentManager.Instance != null)
+        {
+            ARContentManager.Instance.StopAnimation();
+        }
+    }
+}

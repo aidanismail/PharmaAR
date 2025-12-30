@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f1ad4c914f45fa04bac436689a5f1414
+guid: 7a0b2d0f4146e4b4186d7602df2c5025
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,8 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Glass.001
-    second: {fileID: 2100000, guid: 568160b391040204e89374ab4558725a, type: 2}
+      name: Beaker label
+    second: {fileID: 2100000, guid: 349ef7daadc78994da866e474de4e285, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Procedural Glass
+    second: {fileID: 2100000, guid: 7e36c30400fa1ef44a8d54cacf7ba252, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

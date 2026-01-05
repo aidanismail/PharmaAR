@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: serbuk
-  m_Shader: {fileID: -6465566751694194690, guid: 3c1cc9fb090e72b4093f001b33a72417,
+  m_Name: serbuk spatula
+  m_Shader: {fileID: -6465566751694194690, guid: 2519b6327ca49a14baeef7d0a650f8c8,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -22,7 +22,7 @@ Material:
   stringTagMap: {}
   disabledShaderPasses:
   - MOTIONVECTORS
-  m_LockedProperties: _Fill
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -42,15 +42,15 @@ Material:
     m_Floats:
     - _Alpha: 0.9
     - _AlphaClip: 1
-    - _Fill: 0.00466
+    - _Fill: 0.0048
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _Side_Color: {r: 1, g: 1, b: 1, a: 1}
-    - _TopColor: {r: 0.8943396, g: 0.8943396, b: 0.8943396, a: 1}
+    - _Side_Color: {r: 1, g: 1, b: 1, a: 0}
+    - _TopColor: {r: 0.8943396, g: 0.8943396, b: 0.8943396, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &4166734734044931410
+--- !u!114 &6624857408011019920
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

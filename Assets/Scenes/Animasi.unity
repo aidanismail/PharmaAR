@@ -154,8 +154,6 @@ MonoBehaviour:
   stepModels:
   - {fileID: 0}
   animator: {fileID: 0}
-  animClip: {fileID: 0}
-  genericAnimController: {fileID: 0}
   animationClips:
   - IDLE
   - START
@@ -423,8 +421,6 @@ MonoBehaviour:
   - {fileID: 777650790}
   - {fileID: 1571268210}
   animator: {fileID: 0}
-  animClip: {fileID: 0}
-  genericAnimController: {fileID: 0}
   animationClips: []
 --- !u!114 &78747104
 MonoBehaviour:
@@ -2002,12 +1998,12 @@ PrefabInstance:
     - target: {fileID: 282398357620540630, guid: c591482a659209b40a12ed61f8e94996,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.142
+      value: -0.036
       objectReference: {fileID: 0}
     - target: {fileID: 282398357620540630, guid: c591482a659209b40a12ed61f8e94996,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.075
+      value: -0.0074754
       objectReference: {fileID: 0}
     - target: {fileID: 282398357620540630, guid: c591482a659209b40a12ed61f8e94996,
         type: 3}
@@ -3443,7 +3439,7 @@ MonoBehaviour:
   mImageTargetType: 3
   mWidth: 0.2
   mHeight: 0.2
-  mRuntimeTexture: {fileID: 0}
+  mRuntimeTexture: {fileID: 2800000, guid: 1a0ffe6ab6775cd479ad6e519136dc90, type: 3}
   mMotionHint: 1
   mTrackingOptimization: 0
   mTrackingOptimizationNeedsUpgrade: 0
@@ -4386,8 +4382,6 @@ MonoBehaviour:
   - {fileID: 2021955208}
   - {fileID: 1446010614}
   animator: {fileID: 0}
-  animClip: {fileID: 0}
-  genericAnimController: {fileID: 0}
   animationClips: []
 --- !u!114 &720769340
 MonoBehaviour:
@@ -4949,8 +4943,6 @@ MonoBehaviour:
   stepModels:
   - {fileID: 0}
   animator: {fileID: 0}
-  animClip: {fileID: 0}
-  genericAnimController: {fileID: 0}
   animationClips:
   - IDLE
   - START
@@ -6460,7 +6452,7 @@ MonoBehaviour:
   mImageTargetType: 3
   mWidth: 0.2
   mHeight: 0.2
-  mRuntimeTexture: {fileID: 0}
+  mRuntimeTexture: {fileID: 2800000, guid: 220447625c492134aba67fddb1ab74e5, type: 3}
   mMotionHint: 1
   mTrackingOptimization: 0
   mTrackingOptimizationNeedsUpgrade: 0
@@ -6747,7 +6739,7 @@ MonoBehaviour:
   mImageTargetType: 3
   mWidth: 0.2
   mHeight: 0.2
-  mRuntimeTexture: {fileID: 0}
+  mRuntimeTexture: {fileID: 2800000, guid: b21428e6820f7254c91aa49f38346ea8, type: 3}
   mMotionHint: 1
   mTrackingOptimization: 0
   mTrackingOptimizationNeedsUpgrade: 0
@@ -9001,7 +8993,7 @@ MonoBehaviour:
   mImageTargetType: 3
   mWidth: 0.2
   mHeight: 0.2
-  mRuntimeTexture: {fileID: 0}
+  mRuntimeTexture: {fileID: 2800000, guid: 9b3a1f2d9942d0045ae998b7a712c17c, type: 3}
   mMotionHint: 1
   mTrackingOptimization: 0
   mTrackingOptimizationNeedsUpgrade: 0
@@ -11004,7 +10996,7 @@ MonoBehaviour:
   mImageTargetType: 3
   mWidth: 0.2
   mHeight: 0.2
-  mRuntimeTexture: {fileID: 0}
+  mRuntimeTexture: {fileID: 2800000, guid: ddb3f4f394351564281c5944a4822c06, type: 3}
   mMotionHint: 1
   mTrackingOptimization: 0
   mTrackingOptimizationNeedsUpgrade: 0
@@ -11663,12 +11655,12 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: f3df4d243f846a94b886142c4ad0b886,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.1096
+      value: 0.1147
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f3df4d243f846a94b886142c4ad0b886,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0782
+      value: 0.089
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f3df4d243f846a94b886142c4ad0b886,
         type: 3}

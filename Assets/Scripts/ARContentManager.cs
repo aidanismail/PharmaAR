@@ -5,41 +5,41 @@ using Vuforia;
 public class ARContentManager : MonoBehaviour
 {
     public static ARContentManager Instance { get; private set; }
+   
     [Header("Model 3D Berurutan untuk Marker Ini")]
-    public GameObject[] stepModels;
-    public Animator animator;
-
-    public string[] animationClips; 
-
-    private int currentClipIndex = 0; 
+    [SerializeField] private GameObject[] stepModels;
+    
+    [Header("ANIMATION")]
+    [SerializeField] private Animator animator;
+    private const string playAnimationParamName = "PlayAnimation"; // ToDo : Hash and retrieve from config
+    private const string stopAnimationParamName = "StopAnimation"; // ToDo : Hash and retrieve from config
+    private const string animGenericClipEntryName = "AnimClipGenericEntry"; // ToDo : reference to object aja langsung jangan string
+    [SerializeField] private AnimationClip animClip;
+    [SerializeField] AnimatorOverrideController genericAnimController; // ToDo : Move to config
+    
     private Button btnPlayAnimation;
     private Button btnStopAnimation;
-
     private int currentIndex = 0;
     private Button uiBtnNext;
     private Button uiBtnPrev;
 
     void Start()
     {
-        
         btnPlayAnimation = UIManager.Instance.btnPlayAnimation;
         btnStopAnimation = UIManager.Instance.btnStopAnimation;
 
         btnPlayAnimation.onClick.AddListener(PlayAnimation);
         btnStopAnimation.onClick.AddListener(StopAnimation);
     }
-
     
     public void OnTargetFound()
     {
         Debug.Log($"[ARContentManager] Marker '{name}' terdeteksi! Memulai setup navigasi...");
-
         
         if (UIManager.Instance != null)
         {
             uiBtnNext = UIManager.Instance.btnARNext;
             uiBtnPrev = UIManager.Instance.btnARPrev;
-
             
             if (uiBtnNext == null || uiBtnPrev == null)
             {
@@ -48,7 +48,6 @@ public class ARContentManager : MonoBehaviour
             else
             {
                 Debug.Log("[ARContentManager] Sukses mengambil referensi tombol dari UIManager.");
-
                 
                 uiBtnNext.onClick.RemoveAllListeners();
                 uiBtnNext.onClick.AddListener(NextModel);
@@ -63,7 +62,6 @@ public class ARContentManager : MonoBehaviour
         {
             Debug.LogError("[ARContentManager] UIManager Instance tidak ditemukan! Navigasi gagal.");
         }
-
         
         if (stepModels == null || stepModels.Length == 0)
         {
@@ -75,7 +73,6 @@ public class ARContentManager : MonoBehaviour
             UpdateModelVisibility();
             Debug.Log($"[ARContentManager] Model 3D di-reset ke index 0. Total model: {stepModels.Length}");
         }
-
         
         string markerName = GetComponent<ImageTargetBehaviour>().TargetName;
         if (GameManager.Instance != null)
@@ -83,11 +80,7 @@ public class ARContentManager : MonoBehaviour
             GameManager.Instance.OnMarkerFound(markerName);
         }
     }
-
-
-
     
-
     private void NextModel()
     {
         Debug.Log("[ARContentManager] Tombol NEXT diklik!"); 
@@ -114,7 +107,6 @@ public class ARContentManager : MonoBehaviour
     {
         for (int i = 0; i < stepModels.Length; i++)
         {
-            
             if (stepModels[i] == null)
             {
                 Debug.LogWarning($"[ARContentManager] Model di index {i} KOSONG (Missing) di Inspector!");
@@ -133,11 +125,14 @@ public class ARContentManager : MonoBehaviour
 
     public void PlayAnimation()
     {
+        if (genericAnimController != null)
+        {
+            genericAnimController[animGenericClipEntryName] = animClip;
+        }
         if (animator != null)
         {
-            
             Debug.Log("[ARContentManager] Memulai animasi...");
-            animator.SetTrigger("PlayAnimation");
+            animator.SetTrigger(playAnimationParamName);
         }
     }
 
@@ -145,19 +140,11 @@ public class ARContentManager : MonoBehaviour
     {
         if (animator != null)
         {
-            
             Debug.Log("[ARContentManager] Menghentikan animasi...");
-            animator.SetTrigger("StopAnimation");  
+            animator.SetTrigger(stopAnimationParamName);  
         }
     }
-
     
-    public void ChangeAnimation(int clipIndex)
-    {
-        currentClipIndex = clipIndex;
-        PlayAnimation();
-    }
-
     public void OnTargetLost()
     {
         if (UIManager.Instance != null)

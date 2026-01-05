@@ -46,7 +46,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: ac8691d776ae7434eb919fb88bcee37d, type: 2}
+  m_Motion: {fileID: 7400000, guid: ee598031b6bf42143986a1ebf41bc653, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -58,7 +58,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: AnimBebasAir2
+  m_Name: AnimControllerGeneric
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: PlayAnimation

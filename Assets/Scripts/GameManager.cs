@@ -108,7 +108,6 @@ public class GameManager : MonoBehaviour
     public void StartTahap(int tahapIndex)
     {
         int lastCompleted = GetLastCompletedTahapIndex();
-
         
         if (tahapIndex > lastCompleted + 1)
         {

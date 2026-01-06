@@ -154,9 +154,7 @@ MonoBehaviour:
   stepModels:
   - {fileID: 0}
   animator: {fileID: 0}
-  animationClips:
-  - IDLE
-  - START
+  animClip: {fileID: 0}
 --- !u!114 &6151961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -421,7 +419,7 @@ MonoBehaviour:
   - {fileID: 777650790}
   - {fileID: 1571268210}
   animator: {fileID: 0}
-  animationClips: []
+  animClip: {fileID: 0}
 --- !u!114 &78747104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3439,7 +3437,7 @@ MonoBehaviour:
   mImageTargetType: 3
   mWidth: 0.2
   mHeight: 0.2
-  mRuntimeTexture: {fileID: 2800000, guid: 1a0ffe6ab6775cd479ad6e519136dc90, type: 3}
+  mRuntimeTexture: {fileID: 0}
   mMotionHint: 1
   mTrackingOptimization: 0
   mTrackingOptimizationNeedsUpgrade: 0
@@ -4382,7 +4380,7 @@ MonoBehaviour:
   - {fileID: 2021955208}
   - {fileID: 1446010614}
   animator: {fileID: 0}
-  animationClips: []
+  animClip: {fileID: 0}
 --- !u!114 &720769340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4473,7 +4471,7 @@ MonoBehaviour:
   mImageTargetType: 3
   mWidth: 0.2
   mHeight: 0.2
-  mRuntimeTexture: {fileID: 2800000, guid: a2f301c3714686a4d85b2a2962703b47, type: 3}
+  mRuntimeTexture: {fileID: 0}
   mMotionHint: 1
   mTrackingOptimization: 0
   mTrackingOptimizationNeedsUpgrade: 0
@@ -4943,9 +4941,7 @@ MonoBehaviour:
   stepModels:
   - {fileID: 0}
   animator: {fileID: 0}
-  animationClips:
-  - IDLE
-  - START
+  animClip: {fileID: 0}
 --- !u!114 &809872485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5036,7 +5032,7 @@ MonoBehaviour:
   mImageTargetType: 3
   mWidth: 0.2
   mHeight: 0.2
-  mRuntimeTexture: {fileID: 2800000, guid: 7a973d0a75ca3464b943c6c16598e222, type: 3}
+  mRuntimeTexture: {fileID: 0}
   mMotionHint: 1
   mTrackingOptimization: 0
   mTrackingOptimizationNeedsUpgrade: 0
@@ -6452,7 +6448,7 @@ MonoBehaviour:
   mImageTargetType: 3
   mWidth: 0.2
   mHeight: 0.2
-  mRuntimeTexture: {fileID: 2800000, guid: 220447625c492134aba67fddb1ab74e5, type: 3}
+  mRuntimeTexture: {fileID: 0}
   mMotionHint: 1
   mTrackingOptimization: 0
   mTrackingOptimizationNeedsUpgrade: 0
@@ -10996,7 +10992,7 @@ MonoBehaviour:
   mImageTargetType: 3
   mWidth: 0.2
   mHeight: 0.2
-  mRuntimeTexture: {fileID: 2800000, guid: ddb3f4f394351564281c5944a4822c06, type: 3}
+  mRuntimeTexture: {fileID: 0}
   mMotionHint: 1
   mTrackingOptimization: 0
   mTrackingOptimizationNeedsUpgrade: 0

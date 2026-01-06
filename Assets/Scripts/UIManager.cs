@@ -1,8 +1,6 @@
 using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
-using TMPro;
 
 public class UIManager : MonoBehaviour
 {
@@ -16,15 +14,12 @@ public class UIManager : MonoBehaviour
     public GameObject panelScanAR;
     public GameObject panelHowToPlay;
     public GameObject panelInformasiTim;
-
     public GameObject panelInfo;
 
     [Header("Tahapan Controllers (TBA)")]
-    
     public TahapanController[] tahapanButtonsTBA;
 
     [Header("Tahapan Controllers (TK)")]
-    
     public TahapanController[] tahapanButtonsTK;
 
     [Header("AR Popup References")]
@@ -59,15 +54,8 @@ public class UIManager : MonoBehaviour
             btnInfo.onClick.AddListener(() => ShowInfoPanel());
         }
         HideAllARPopups();
-        btnPlayAnimation.onClick.AddListener(OnPlayAnimationClicked);
-        btnStopAnimation.onClick.AddListener(OnStopAnimationClicked);
     }
-
-
-
-
     
-
     public void ForceHideInfoPanel()
     {
         if (panelInfo != null && panelInfo.activeSelf)
@@ -86,11 +74,11 @@ public class UIManager : MonoBehaviour
         currentActivePanel = panelToShow;
     }
 
+    // ToDo : Panel Info cukup satu saja, datanya yang unique
     public void ShowInfoPanel()
     {
         if (GameManager.Instance != null)
         {
-            
             TahapanData data = GameManager.Instance.GetCurrentTahapanData(
                 GameManager.Instance.currentAttemptingTahapIndex
             );
@@ -103,7 +91,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-
+    // ToDo : Panel Info cukup satu saja, datanya yang unique
     public void CloseInfoPanel()
     {
         if (GameManager.Instance != null)
@@ -202,7 +190,7 @@ public class UIManager : MonoBehaviour
         int lastCompletedIndex = GameManager.Instance.GetLastCompletedTahapIndex();
 
         
-        TahapanController[] buttonsToUpdate = (GameManager.Instance.currentMode == GameManager.GameMode.TBA)
+        TahapanController[] buttonsToUpdate = (GameManager.Instance.currentMode == GameMode.TBA)
                                               ? tahapanButtonsTBA
                                               : tahapanButtonsTK;
 
@@ -219,23 +207,5 @@ public class UIManager : MonoBehaviour
             btn.UpdateVisualState(isInteractable, alpha);
         }
         Debug.Log($"UIManager: Status tombol tahapan untuk mode {GameManager.Instance.currentMode} diperbarui.");
-    }
-
-    private void OnPlayAnimationClicked()
-    {
-        
-        if (ARContentManager.Instance != null)
-        {
-            ARContentManager.Instance.PlayAnimation();
-        }
-    }
-
-    private void OnStopAnimationClicked()
-    {
-        
-        if (ARContentManager.Instance != null)
-        {
-            ARContentManager.Instance.StopAnimation();
-        }
     }
 }

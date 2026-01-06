@@ -44,7 +44,7 @@ public class MainMenu : MonoBehaviour
     {
         if (GameManager.Instance != null)
         {
-            GameManager.Instance.SetMode(GameManager.GameMode.TBA);
+            GameManager.Instance.SetMode(GameMode.TBA);
         }
     }
 
@@ -53,7 +53,7 @@ public class MainMenu : MonoBehaviour
     {
         if (GameManager.Instance != null)
         {
-            GameManager.Instance.SetMode(GameManager.GameMode.Kompleksometri);
+            GameManager.Instance.SetMode(GameMode.Kompleksometri);
         }
     }
 

@@ -154,9 +154,7 @@ public class UIManager : MonoBehaviour
             currentActivePanel = panelHomePage;
         }
     }
-
     
-
     public void ShowARPopup(GameObject popupToShow)
     {
         HideAllARPopups();
@@ -180,9 +178,7 @@ public class UIManager : MonoBehaviour
         if (btnARNext != null) btnARNext.onClick.RemoveAllListeners();
         if (btnARPrev != null) btnARPrev.onClick.RemoveAllListeners();
     }
-
     
-
     public void UpdateTahapButtonStates()
     {
         if (GameManager.Instance == null) return;
@@ -207,5 +203,17 @@ public class UIManager : MonoBehaviour
             btn.UpdateVisualState(isInteractable, alpha);
         }
         Debug.Log($"UIManager: Status tombol tahapan untuk mode {GameManager.Instance.currentMode} diperbarui.");
+    }
+    
+    public void SetButtonNavigationEnabled(bool enabled)
+    { 
+        btnARNext.gameObject.SetActive(enabled);
+        btnARPrev.gameObject.SetActive(enabled);
+    }
+    
+    public void SetButtonAnimationEnabled(bool enabled)
+    { 
+        btnPlayAnimation.gameObject.SetActive(enabled);
+        btnStopAnimation.gameObject.SetActive(enabled);
     }
 }

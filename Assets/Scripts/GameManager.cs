@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour
     public TahapanData[] tahapanTBA;
     public TahapanData[] tahapanKompleksometri;
 
+    public GameObject[] markerTBAMapping; // improve, not a propper way
+    public GameObject[] markerTKMapping; // improve if have time, not a propper way
+    
     [Header("State (runtime only)")]
     [Tooltip("Tahap yang sedang dikerjakan saat ini. -1 = belum ada.")]
     public int currentAttemptingTahapIndex = -1;
@@ -101,7 +104,15 @@ public class GameManager : MonoBehaviour
             Debug.LogWarning($"[GameManager] Tahap {tahapIndex + 1} masih terkunci. LastCompleted = {lastCompleted}");
             return;
         }
-
+        switch (currentMode)
+        {
+            case GameMode.TBA:
+                if(tahapIndex < markerTBAMapping.Length) markerTBAMapping[tahapIndex].SetActive(true);
+                break;
+            case GameMode.Kompleksometri:
+                if(tahapIndex < markerTKMapping.Length) markerTKMapping[tahapIndex].SetActive(true);
+                break;
+        }
         currentAttemptingTahapIndex = tahapIndex;
 
         // ToDo : Data cuman buat debug (?)
@@ -125,7 +136,15 @@ public class GameManager : MonoBehaviour
             Debug.LogWarning("[GameManager] CompleteCurrentTahap dipanggil tapi tidak ada tahap aktif.");
             return;
         }
-
+        switch (currentMode)
+        {
+            case GameMode.TBA:
+                if(currentAttemptingTahapIndex < markerTBAMapping.Length) markerTBAMapping[currentAttemptingTahapIndex].SetActive(false);
+                break;
+            case GameMode.Kompleksometri:
+                if(currentAttemptingTahapIndex < markerTKMapping.Length) markerTKMapping[currentAttemptingTahapIndex].SetActive(false);
+                break;
+        }
         
         PlayerPrefs.SetInt(CurrentProgressKey, currentAttemptingTahapIndex);
         PlayerPrefs.Save();

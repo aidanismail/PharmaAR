@@ -22,23 +22,27 @@ public class ARContentManager : MonoBehaviour
 
     private void OnDisable()
     {
-        UIManager.Instance.btnPlayAnimation.onClick.RemoveAllListeners();
-        UIManager.Instance.btnStopAnimation.onClick.RemoveAllListeners();
+        if (UIManager.Instance == null)
+        {
+            return;
+        }
+        if (UIManager.Instance.btnPlayAnimation != null) UIManager.Instance.btnPlayAnimation.onClick.RemoveAllListeners();
+        if (UIManager.Instance.btnStopAnimation != null) UIManager.Instance.btnStopAnimation.onClick.RemoveAllListeners();
     }
 
     public void OnTargetFound()
     {
-        if(UIManager.Instance.btnPlayAnimation) UIManager.Instance.btnPlayAnimation.onClick.AddListener(PlayAnimation);
-        if(UIManager.Instance.btnStopAnimation) UIManager.Instance.btnStopAnimation.onClick.AddListener(StopAnimation);
-        
         Debug.Log($"[ARContentManager] Marker '{name}' terdeteksi! Memulai setup navigasi...");
-
-        if (stepModels == null || stepModels.Length == 0)
+        if (!IsHaveStepModels())
         {
-            Debug.LogError($"[ARContentManager] Array 'Step Models' di marker '{name}' masih KOSONG! Isi di Inspector.");
             return;
         }
-
+        if (IsHaveAnimationClip())
+        {
+            UIManager.Instance.SetButtonAnimationEnabled(true);
+            if (UIManager.Instance.btnPlayAnimation) UIManager.Instance.btnPlayAnimation.onClick.AddListener(PlayAnimation);
+            if (UIManager.Instance.btnStopAnimation) UIManager.Instance.btnStopAnimation.onClick.AddListener(StopAnimation);
+        }
         if (stepModels.Length > 1)
         {
             if (UIManager.Instance.btnARNext == null || UIManager.Instance.btnARPrev == null)
@@ -47,23 +51,15 @@ public class ARContentManager : MonoBehaviour
             }
             else
             {
-                SetButtonNavigationEnabled(true);
-                Debug.Log("[ARContentManager] Sukses mengambil referensi tombol dari UIManager.");
-
+                UIManager.Instance.SetButtonNavigationEnabled(true);
                 UIManager.Instance.btnARNext.onClick.RemoveAllListeners();
                 UIManager.Instance.btnARNext.onClick.AddListener(NextModel);
-                Debug.Log("[ARContentManager] Listener 'NextModel' dipasang ke tombol Next.");
-
+                
                 UIManager.Instance.btnARPrev.onClick.RemoveAllListeners();
                 UIManager.Instance.btnARPrev.onClick.AddListener(PrevModel);
-                Debug.Log("[ARContentManager] Listener 'PrevModel' dipasang ke tombol Prev.");
             }
         }
-        else
-        {
-            SetButtonNavigationEnabled(false);
-        }
-        
+
         currentIndex = 0;
         UpdateModelVisibility();
         UpdateButtonState();
@@ -98,7 +94,7 @@ public class ARContentManager : MonoBehaviour
         }
     }
 
-    void UpdateModelVisibility()
+    private void UpdateModelVisibility()
     {
         for (int i = 0; i < stepModels.Length; i++)
         {
@@ -111,18 +107,12 @@ public class ARContentManager : MonoBehaviour
         }
     }
     
-    void UpdateButtonState()
+    private void UpdateButtonState()
     {
         if (UIManager.Instance.btnARPrev) UIManager.Instance.btnARPrev.interactable = (currentIndex > 0);
         if (UIManager.Instance.btnARNext) UIManager.Instance.btnARNext.interactable = (currentIndex < stepModels.Length - 1);
     }
-
-    void SetButtonNavigationEnabled(bool enabled)
-    {
-       if(UIManager.Instance.btnARNext != null) UIManager.Instance.btnARNext.gameObject.SetActive(enabled);
-       if(UIManager.Instance.btnARPrev != null) UIManager.Instance.btnARPrev.gameObject.SetActive(enabled);
-    }
-
+    
     public void PlayAnimation()
     {
         if (GameManager.Instance == null)
@@ -165,15 +155,36 @@ public class ARContentManager : MonoBehaviour
         }
         animator.SetTrigger(GameManager.Instance.AnimationConfig.StopAnimationParamName);  
     }
+
+    private bool IsHaveAnimationClip()
+    {
+        return animator != null && animClip != null;
+    }
+
+    private bool IsHaveStepModels()
+    {
+        return stepModels.Length > 0;
+    }
     
     public void OnTargetLost()
     {
-        if (UIManager.Instance != null)   UIManager.Instance.HideAllARPopups();
-
-        if (UIManager.Instance.btnARNext  != null) UIManager.Instance.btnARNext.onClick.RemoveAllListeners();
-        if (UIManager.Instance.btnARPrev != null) UIManager.Instance.btnARPrev.onClick.RemoveAllListeners();
-        if (UIManager.Instance.btnPlayAnimation != null) UIManager.Instance.btnPlayAnimation.onClick.RemoveAllListeners();
-        if (UIManager.Instance.btnStopAnimation != null) UIManager.Instance.btnStopAnimation.onClick.RemoveAllListeners();
-        Debug.Log($"[ARContentManager] Marker '{name}' hilang. Listener tombol dibersihkan.");
+        if (UIManager.Instance == null)
+        {
+            return;
+        }
+        
+        UIManager.Instance.HideAllARPopups();
+        if (stepModels.Length > 1)
+        {
+            if (UIManager.Instance.btnARNext != null) UIManager.Instance.btnARNext.onClick.RemoveAllListeners();
+            if (UIManager.Instance.btnARPrev != null) UIManager.Instance.btnARPrev.onClick.RemoveAllListeners();
+            UIManager.Instance.SetButtonNavigationEnabled(false);
+        }
+        if (IsHaveAnimationClip())
+        {
+            if (UIManager.Instance.btnPlayAnimation != null) UIManager.Instance.btnPlayAnimation.onClick.RemoveAllListeners();
+            if (UIManager.Instance.btnStopAnimation != null) UIManager.Instance.btnStopAnimation.onClick.RemoveAllListeners();
+            UIManager.Instance.SetButtonAnimationEnabled(false);
+        }
     }
 }

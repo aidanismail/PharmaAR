@@ -7,62 +7,64 @@ public class TahapanController : MonoBehaviour
     public int tahapIndex;   
 
     private Button myButton;
-
-    private Button btnInfo;
     private CanvasGroup myCanvasGroup;
 
     void Awake()
     {
         myButton = GetComponent<Button>();
         myCanvasGroup = GetComponent<CanvasGroup>();
-        btnInfo = GetComponent<Button>();
-
-        if (myButton == null)
-            Debug.LogError($"[TahapanController] Button component missing on {gameObject.name}!");
-        if (myCanvasGroup == null)
-            Debug.LogError($"[TahapanController] CanvasGroup component missing on {gameObject.name}. Tambahkan CanvasGroup untuk kontrol alpha & interaksi.");
-
         
+        // ToDo : Remove logging from release build
+        if (myButton == null)
+        {
+            Debug.LogError($"[TahapanController] Button component missing on {gameObject.name}!");
+        }
+        if (myCanvasGroup == null)
+        {
+            Debug.LogError($"[TahapanController] CanvasGroup component missing on {gameObject.name}. Tambahkan CanvasGroup untuk kontrol alpha & interaksi.");
+        }
+    }
+
+    private void OnEnable()
+    {
         if (myButton != null)
         {
-            myButton.onClick.RemoveListener(OnTahapClicked); 
             myButton.onClick.AddListener(OnTahapClicked);
+            myButton.onClick.AddListener(OnInfoButtonClicked);
         }
+    }
 
-        if (btnInfo != null)
+    private void OnDisable()
+    {
+        if (myButton != null)
         {
-            btnInfo.onClick.AddListener(OnInfoButtonClicked);
-        }
-        else
-        {
-            Debug.LogError("[TahapanController] Tombol Info tidak ditemukan.");
+            myButton.onClick.RemoveAllListeners(); 
         }
     }
 
     private void OnTahapClicked()
     {
-        TahapanData data = GameManager.Instance.GetCurrentTahapanData(GameManager.Instance.currentAttemptingTahapIndex);
-        if (GameManager.Instance != null)
-        {
-            Debug.Log($"[TahapanController] Tombol Tahap index {tahapIndex} diklik.");
-            GameManager.Instance.StartTahap(tahapIndex);
-            GameManager.Instance.HideInfoPopup(data.panelInfo);
-        }
-        else
+        if (GameManager.Instance == null)
         {
             Debug.LogError("[TahapanController] GameManager.Instance is null!");
+            return;
         }
+        TahapanData data = GameManager.Instance.GetCurrentTahapanData(tahapIndex);
+        if (data == null)
+        {
+            return;
+        }
+        GameManager.Instance.StartTahap(tahapIndex);
+        GameManager.Instance.HideInfoPopup(data.panelInfo);
     }
 
     private void OnInfoButtonClicked()
     {
         if (GameManager.Instance != null)
         {
-            Debug.Log($"[TahapanController] Tombol Info untuk Tahap {tahapIndex} diklik.");
             UIManager.Instance.ShowInfoPanel();  
         }
     }
-
     
     public void UpdateVisualState(bool isInteractable, float alpha)
     {
